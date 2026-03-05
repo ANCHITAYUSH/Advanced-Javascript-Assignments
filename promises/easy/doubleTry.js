@@ -10,6 +10,16 @@
 
 async function doubleTry(fn) {
 
+    try{
+        return await fn();
+    }catch(error){
+        try{
+            return await fn();
+        }catch(error){
+            throw error;
+        }
+    }
+
 }
 
 module.exports = doubleTry;
